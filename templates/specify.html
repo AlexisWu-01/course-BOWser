@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<form method="post" action="{{url}}">
+
+    <ul>
+        <li><h5>{{course_title}}</h5></li>
+        <li> School: {{school}}</li>
+        <li> Course Code: {{course_code}}</li>
+    </ul>
+
+    <p class="sansserif"><label>professor</label></p>
+    <select name = 'prof' >
+        <option value=''> select</option>
+        {% for i in range(prof_lst|length)%}
+            <option value = '{{pids[i]}}''>{{prof_lst[i]}}</option>
+        {% endfor%}
+    </select>
+
+    <p class="sansserif">If you do not see your professor in list, please add them here. </p>
+    <input type = 'text' name = 'new_prof'>
+
+    <p><input type="submit" value='Details'>
+    </form>
+
+   {%endblock %} 

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>Please login or join, using one of the forms below:</p>
+    
+
+<form id="joinform" action="{{url_for('join')}}" method="post">
+    <h2>Register</h2>
+    <p><label>Username    <input type="text" name="username" required pattern="^\w+$"> </label></p>
+    <p><label>Password  <input type="password" name="password1" required>  </label></p>
+    <p><label>Password <input type="password" name="password2" required> for double verification </label></p>
+    <p><button type="submit">register</button></p>
+</form>
+    
+<form id="loginform" action="{{url_for('login')}}" method="post">
+    <h2>Login</h2>
+    <p><label>Username: <input type="text" name="username" required pattern="^\w+$"></label></p>
+    <p><label>Password: <input type="password" name="password" required></label></p>
+    <p><button type="submit">log in</button></p>
+</form>
+{% endblock %}
+    
+
+{% block jquery_scripts %}
+<script>
+$("#joinform").on('submit', function (event) {
+     var pw1 = $(this).find('[name=password1]').val();
+     var pw2 = $(this).find('[name=password2]').val();
+     // should also check for length and common words etc
+     if( pw1 != pw2 ) {
+         // something more sophisticated than alert would be nice
+         alert("passwords don't match");
+     }
+});
+</script>
+{% endblock %}
+
+
+
+

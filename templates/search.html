@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<h5>Course Search</h5>
+<form method="post" action="{{url_for('search')}}">
+
+    <p class="sansserif"><label>What's the target school?</label></p>
+    <select name = 'school_id' >
+        <option value=''> select</option>
+       
+        <option value = '0'>Olin</option>
+        <option value = '1'>Wellesley</option>
+        <option value = '2'>Babson</option>
+    </select>
+
+    <p class="sansserif"><label>select department</label></p>
+    <select name = 'department' >
+        <option value=''> select</option>
+        {% for dep in department_lst %}
+            <option value = '{{dep}}''>{{dep}}</option>
+        {% endfor%}
+    </select>
+
+
+    <p class="sansserif">If you do not see the department, enter it here. </p>
+    <input type = 'text' name = 'new_dep'>
+
+    <p class="sansserif">course number (numbers only)</p>
+    <input required type = 'int' name = 'course_tt'>
+    
+
+    <p><input type="submit" value='search'>
+    </form>
+
+   {%endblock %} 

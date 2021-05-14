@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang = en>
+
+  <form align="right" name="form1" method="post" action="{{url_for('logout')}}">
+    <label class="logoutLblPos">
+    <input name="submit2" type="submit" id="submit2" value="log out">
+    </label>
+  </form>
+  <head>
+
+
+    <meta charset="utf-8">
+    <meta name=author content="Alexis Wu">
+    <meta name=description content="">
+    <meta name=keywords content="">    
+    <title>{{page_title}}</title>
+    <link rel="stylesheet" type="text/css"
+          href="/static/style.css">
+  </head>
+<body>
+    <div id="navigation">
+      <ul>
+        <li><a href="/">Home</a>
+        <li><a href="/search/">Search for A Course</a>
+        <li><a href="/add_course/">Add a Course For Our Database</a>
+      </ul>
+    </div>
+  
+    <h2> Welcome to Course Bowser</h2>
+    <h3> Made for your X-reg</h3>
+
+
+
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <div class="{{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endwith %}
+
+{% block content %}
+{% endblock %}
+</body>
+</html>

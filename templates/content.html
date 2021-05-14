@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul>
+    <li><h5>{{course_title}}</h5></li>
+
+    <li><span class=lb> School: </span> <span>{{school_name}} </span></li>
+    <li><span class=lb> Course code: </span><span> {{course_code}}</span></li>
+    <li><span class=lb> Instructor:</span> <span> {{prof}} </span></li>
+</ul>
+
+
+<form method=post action="{{url}}">
+    <p>username: {{bloguser}}</p>
+    <p><label>Comment: <br>
+        <textarea name="comment" rows="5" cols="80"  placeholder="leave a comment for this class here"></textarea></label></p>
+    <p><input type="submit" value="post"></p>
+ </form>
+
+
+<dl>
+
+    <div class='display-comment'>
+        {% for row in rows %}
+
+        <div class='time'>
+        {{row.username}} commented on {{row.time}}
+        </div>
+        <br>
+        <div class='comment'>
+        {{row.entry}}
+        <br>
+        <br>
+
+        <!-- <dt>{{row.username}} at {{row.time}}</dt><dd>{{row.entry}}</dd> -->
+    {% endfor %}
+</dl>
+
+<h3>Upload or Update Syllabus</h3>
+    <form action="" method=post enctype=multipart/form-data>
+      <p><input type=file name=file>
+         <input type=submit value=Upload>
+    </form>
+
+    <a href="/return-files/{{value}}" target="blank"><button class='btn btn-default'>Download</button></a>
+
+
+{% endblock %}
